@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.example.fetchrewardsandroidtakehome.helpers.ListAdapter
 import com.example.fetchrewardsandroidtakehome.models.ListItem
 import com.example.fetchrewardsandroidtakehome.services.ServiceBuilder
-import com.example.fetchrewardsandroidtakehome.services.getList
+import com.example.fetchrewardsandroidtakehome.services.GetList
 import kotlinx.android.synthetic.main.activity_main.*
 import android.util.Log
 import android.widget.Toast
@@ -21,9 +21,9 @@ class MainActivity : AppCompatActivity() {
         loadList()
     }
 }
-//parameter needed?
+
 private fun loadList() {
-    val destinationService = ServiceBuilder.buildService(getList::class.java)
+    val destinationService = ServiceBuilder.buildService(GetList::class.java)
     val requestCall = destinationService.getFetchRewardsList()
     val recyclerview = R.id.recyclerview
 
