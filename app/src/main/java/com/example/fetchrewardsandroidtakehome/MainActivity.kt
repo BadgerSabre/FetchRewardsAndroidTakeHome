@@ -32,12 +32,13 @@ private fun loadList() {
             Log.d("Response", "onResponse: ${response.body()}")
             if (response.isSuccessful) {
                 val retrievedList = response.body()!!
+                val sortedList = retrievedList.sortedBy { it.listId }
+                val finalSortedList = sortedList.sortedBy { it.name }
                 Log.d("Response", "retrievedList size : ${retrievedList.size}")
-                recyclerview.adapter = ListAdapter(response.body()!!)
+                recyclerview.adapter = ListAdapter(finalSortedList)
             } else {
                 Toast.makeText(this@MainActivity, "Something went wrong ${response.message()}", Toast.LENGTH_SHORT).show()
             }
-
         }
     })
 }
